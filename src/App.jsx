@@ -28,7 +28,7 @@ function App() {
   const handleUsernameSubmit = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8080/users/name/${username}`
+        `https://questlogirl-phillipspencera.b4a.run/users/name/${username}`
       );
 
       if (!res.data) {
@@ -47,7 +47,10 @@ function App() {
   const handleNewUserSubmit = async () => {
     try {
       const newUser = { name: username };
-      const response = await axios.post("http://localhost:8080/users", newUser);
+      const response = await axios.post(
+        "https://questlogirl-phillipspencera.b4a.run/users",
+        newUser
+      );
 
       console.log(response);
 

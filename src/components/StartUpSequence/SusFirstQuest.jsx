@@ -30,7 +30,7 @@ function SupFirstQuest(props) {
     // Call a function to save the updated data to the server
     try {
       const response = await axios.put(
-        `http://localhost:8080/users/${userId}`,
+        `https://questlogirl-phillipspencera.b4a.run/users/${userId}`,
         updatedUser
       );
       console.log("User updated with new quest", response);
