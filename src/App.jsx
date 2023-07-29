@@ -4,6 +4,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+import SusLogin from "./components/StartUpSequence/SusLogin";
 import MainMenu from "./components/MainMenu";
 import MainQuest from "./components/MainQuest";
 import SideQuest from "./components/SideQuest";
@@ -71,6 +72,7 @@ function App() {
   return (
     <div>
       <Routes>
+        <Route path="/sus-login" element={<SusLogin />} />
         <Route
           path="/sus-username"
           element={
