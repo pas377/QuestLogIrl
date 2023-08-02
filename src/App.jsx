@@ -50,7 +50,7 @@ function App() {
     try {
       const newUser = { name: username };
       const response = await axios.post(
-        "https://questlogirl-phillipspencera.b4a.run/users",
+        "https://questlogirl-phillipspencera.b4a.run/users/",
         newUser
       );
 
