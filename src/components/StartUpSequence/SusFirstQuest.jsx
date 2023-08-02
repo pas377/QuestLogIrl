@@ -17,12 +17,17 @@ function SusFirstQuest(props) {
 
     // Create a new quest object
     const newQuest = {
-      id: Math.random(), // Or however you generate unique IDs
       name: questName,
       destination: statedPurpose,
-      roadMarker1: roadMarker1,
-      roadMarker2: roadMarker2,
-      roadMarker3: roadMarker3,
+      roadMarker1: {
+        name: roadMarker1,
+      },
+      roadMarker2: {
+        name: roadMarker2,
+      },
+      roadMarker3: {
+        name: roadMarker3,
+      },
     };
 
     // Update the user data with the new quest
@@ -34,7 +39,7 @@ function SusFirstQuest(props) {
     // Call a function to save the updated data to the server
     try {
       const response = await axios.put(
-        `https://questlogirl-phillipspencera.b4a.run/users${username}`,
+        `https://questlogirl-phillipspencera.b4a.run/users/${userId}/mainquest`,
         updatedUser
       );
       console.log("User updated with new quest", response);
@@ -79,7 +84,6 @@ function SusFirstQuest(props) {
         <h4> Ah, a new adventurer; Welcome {username}! </h4>
         <h4> What is the purpose of your quest? </h4>
         <form onSubmit={handleQuestSubmit}>
-          {" "}
           <input
             type="text"
             value={statedPurpose}
