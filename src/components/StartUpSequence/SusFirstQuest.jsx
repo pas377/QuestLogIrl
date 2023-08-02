@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-function SupFirstQuest(props) {
+function SusFirstQuest(props) {
   const username = props.newUserData ? props.newUserData.name : "";
   const userId = props.newUserData ? props.newUserData.id : null;
-
+  const navigate = useNavigate();
   const [questName, setQuestName] = useState("");
   const [statedPurpose, setStatedPurpose] = useState("");
+  const [roadMarker1, setRoadMarker1] = useState("");
+  const [roadMarker2, setRoadMarker2] = useState("");
+  const [roadMarker3, setRoadMarker3] = useState("");
 
   const handleQuestSubmit = async (e) => {
     e.preventDefault();
@@ -16,9 +20,9 @@ function SupFirstQuest(props) {
       id: Math.random(), // Or however you generate unique IDs
       name: questName,
       destination: statedPurpose,
-      roadMarker1: null,
-      roadMarker2: null,
-      roadMarker3: null,
+      roadMarker1: roadMarker1,
+      roadMarker2: roadMarker2,
+      roadMarker3: roadMarker3,
     };
 
     // Update the user data with the new quest
@@ -30,10 +34,13 @@ function SupFirstQuest(props) {
     // Call a function to save the updated data to the server
     try {
       const response = await axios.put(
-        `https://questlogirl-phillipspencera.b4a.run/users/${userId}`,
+        `https://questlogirl-phillipspencera.b4a.run/users${username}`,
         updatedUser
       );
       console.log("User updated with new quest", response);
+
+      // navigate to the '/sus-first-skill' route
+      navigate("/sus-first-skill");
     } catch (error) {
       console.error("Error updating user with new quest", error);
     }
@@ -62,6 +69,7 @@ function SupFirstQuest(props) {
   const centerButton = {
     display: "flex",
     justifyContent: "center",
+    padding: "5px 5px",
   };
 
   return (
@@ -85,6 +93,31 @@ function SupFirstQuest(props) {
             onChange={(e) => setQuestName(e.target.value)}
             style={inputStyle}
           />
+          <h4>
+            {" "}
+            Name three things you could do to bring you closer to your goal:{" "}
+          </h4>
+          <h5> Milestone: </h5>
+          <input
+            type="text"
+            value={roadMarker1}
+            onChange={(e) => setRoadMarker1(e.target.value)}
+            style={inputStyle}
+          />
+          <h5> Milestone: </h5>
+          <input
+            type="text"
+            value={roadMarker2}
+            onChange={(e) => setRoadMarker2(e.target.value)}
+            style={inputStyle}
+          />
+          <h5> Milestone: </h5>
+          <input
+            type="text"
+            value={roadMarker3}
+            onChange={(e) => setRoadMarker3(e.target.value)}
+            style={inputStyle}
+          />
           <div style={centerButton}>
             <input type="submit" value="Submit" style={buttonStyle} />
           </div>
@@ -94,4 +127,4 @@ function SupFirstQuest(props) {
   );
 }
 
-export default SupFirstQuest;
+export default SusFirstQuest;

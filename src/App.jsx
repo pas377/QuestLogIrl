@@ -15,6 +15,7 @@ import SkillsMenu from "./components/SkillsMenu";
 import SideQuestsMenu from "./components/SideQuestsMenu";
 import SusUsername from "./components/StartUpSequence/SusUsername";
 import SusFirstQuest from "./components/StartUpSequence/SusFirstQuest";
+import SusFirstSkill from "./components/StartUpSequence/SusFirstSkill";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -90,6 +91,10 @@ function App() {
         <Route
           path="/sus-first-quest"
           element={<SusFirstQuest newUserData={newUserData} />}
+        />
+        <Route
+          path="/sus-first-skill"
+          element={<SusFirstSkill newUserData={newUserData} />}
         />
         <Route path="/main-menu" element={<MainMenu userData={userData} />} />
         <Route path="/main-quest" element={<MainQuest />} />
